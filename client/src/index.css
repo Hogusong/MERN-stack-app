@@ -26,6 +26,22 @@ main {
   margin-top: 5rem;
 }
 
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 0.25rem;
+  overflow: hidden;
+  background: white;
+}
+
 .slide-in-left-enter {
   transform: translateX(-100%);
 }

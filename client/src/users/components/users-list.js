@@ -1,12 +1,14 @@
 import React from "react";
 
+import "../../css/users-list.css";
 import UserItem from "./user-item";
+import Card from "../../shared/components/UIElements/card";
 
 const UsersList = props => {
   if (!props.users || props.users.length < 1) {
     return (
       <div className="center">
-        <h2>Loading ...</h2>
+        <Card><h2>Loading ...</h2></Card>
       </div>
     );
   }
