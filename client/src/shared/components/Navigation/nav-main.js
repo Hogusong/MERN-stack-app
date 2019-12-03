@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../../../css/nav-main.css";
 import NavLinks from "./nav-links";
 import SideDrawer from "./side-drawer";
+import BackDrop from "../UIElements/back-drop";
 
 const MainNavigation = () => {
   const [drawerIsOpen, setOpenDrawer] = useState(false);
@@ -13,6 +14,7 @@ const MainNavigation = () => {
 
   return (
     <React.Fragment>
+      {drawerIsOpen && <BackDrop onClick={closeDrawer} />}
       <SideDrawer show={drawerIsOpen}>
         <nav className="nav-drawer" onClick={closeDrawer}>
           <NavLinks />
