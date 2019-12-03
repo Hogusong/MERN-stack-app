@@ -1,8 +1,26 @@
 import React from "react";
 
-const Users = () => {
+import UsersLIst from "../components/users-list";
 
-  return <div>This page is for USERS!</div>
+const Users = () => {
+  const USERS = [
+    {
+      id: "u1",
+      name: "John Smith",
+      image:
+        "https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      places: 3
+    },
+    {
+      id: "u2",
+      name: "Sam Williams",
+      image:
+        "https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      places: 1
+    }
+  ];
+
+  return <UsersLIst users={USERS}/>
 };
 
 export default Users;
