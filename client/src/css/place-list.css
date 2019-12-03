@@ -1,0 +1,37 @@
+.place-list {
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.place-item {
+  margin: 1rem 0;
+}
+
+.place-content {
+  padding: 0;
+}
+
+.place-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.place-info h2,
+.place-info h3,
+.place-info p {
+  margin: 0 0 0.5rem 0;
+}
+
+.place-actions {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.place-actions button,
+.place-actions a {
+  margin: 0.5rem;
+}
