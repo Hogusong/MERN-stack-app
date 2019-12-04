@@ -58,6 +58,16 @@
   margin: 0.5rem;
 }
 
+.map-container {
+  width: 100%;
+  height: 16rem;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 768px) {
   .place-image {
     height: 20rem;
