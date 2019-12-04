@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Card from "../../shared/components/UIElements/card";
 import Button from "../../shared/components/FormElements/button";
 import Map from "../../shared/components/UIElements/map";
+import Modal from "../../shared/components/UIElements/modal";
 
 const PlaceItem = props => {
   const place = props.place;
@@ -14,11 +15,17 @@ const PlaceItem = props => {
 
   return (
     <React.Fragment>
-      {showMap && (
+      <Modal
+        show={showMap}
+        header={place.address}
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-action"
+        footer={<Button onClick={closeMapHandler}>Close</Button>}
+      >
         <div className="map-container">
           <Map center={place.location} zoom={16}/>
         </div>
-      )}
+      </Modal>
       <li className="place-item">
         <Card className="place-content">
           <div className="place-image">
