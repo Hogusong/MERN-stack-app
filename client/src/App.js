@@ -11,7 +11,7 @@ import Auth from "./users/pages/auth";
 import MainNavigation from "./shared/components/Navigation/nav-main";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <BrowserRouter>

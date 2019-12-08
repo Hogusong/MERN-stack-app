@@ -32,6 +32,11 @@
   background: #ff0055;
 }
 
+.button--primary {
+  background: rgb(33, 151, 247);
+  border-color: rgb(33, 151, 247);
+}
+
 .button--danger {
   background: #830000;
   border-color: #830000;

@@ -11,7 +11,7 @@ const NavLinks = props => {
       <li><NavLink to="/" exact>Home</NavLink></li>
       <li><NavLink to="/users">All Users</NavLink></li>
       {isLoggedIn && <li><NavLink to="/u2/places">My Places</NavLink></li>}
-      <li><NavLink to="/places">All Places</NavLink></li>
+      <li><NavLink to="/places" exact>All Places</NavLink></li>
       {isLoggedIn && <li><NavLink to="/places/new">Add a Place</NavLink></li>}
       {isLoggedIn ? 
         <li><NavLink to="/" onClick={logout}>Logout</NavLink></li> :
