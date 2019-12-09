@@ -5,6 +5,7 @@ import "../../css/new-place.css";
 import PLACES from "../../shared/dummy-data/places";
 import Input from "../../shared/components/FormElements/input";
 import Button from "../../shared/components/FormElements/button";
+import Card from "../../shared/components/UIElements/card";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -63,44 +64,49 @@ const EditPlace = () => {
   }
 
   return (
-    <form className="place-form" onSubmit={onSubmitHandler}>
-      <Input
-        id="title"
-        type="text"
-        label="Title"
-        element="input"
-        validators={[VALIDATOR_REQUIRE()]}
-        errMessage="Please enter a valid title!"
-        onInput={inputHandler}
-        initValue={formState.inputs.title.value}
-        initValid={formState.inputs.title.isValid}
-      />
-      <Input
-        id="description"
-        type="text"
-        label="Description"
-        element="textarea"
-        validators={[VALIDATOR_MINLENGTH(5)]}
-        errMessage="Please enter a valid description(at least 5 characters)!"
-        onInput={inputHandler}
-        initValue={formState.inputs.description.value}
-        initValid={formState.inputs.description.isValid}
-      />
-      <Input
-        id="address"
-        type="text"
-        label="Address"
-        element="input"
-        validators={[VALIDATOR_REQUIRE()]}
-        errMessage="Please enter a valid address!"
-        onInput={inputHandler}
-        initValue={formState.inputs.address.value}
-        initValid={formState.inputs.address.isValid}
-      />
-      <Button type="submit" disabled={!formState.isValid}>
-        Update Place
-      </Button>
-    </form>
+    <Card className="add-place">
+      <h2 className="center">Update This Place</h2>
+      <form className="place-form" onSubmit={onSubmitHandler}>
+        <Input
+          id="title"
+          type="text"
+          label="Title"
+          element="input"
+          validators={[VALIDATOR_REQUIRE()]}
+          errMessage="Please enter a valid title!"
+          onInput={inputHandler}
+          initValue={formState.inputs.title.value}
+          initValid={formState.inputs.title.isValid}
+        />
+        <Input
+          id="description"
+          type="text"
+          label="Description"
+          element="textarea"
+          validators={[VALIDATOR_MINLENGTH(5)]}
+          errMessage="Please enter a valid description(at least 5 characters)!"
+          onInput={inputHandler}
+          initValue={formState.inputs.description.value}
+          initValid={formState.inputs.description.isValid}
+        />
+        <Input
+          id="address"
+          type="text"
+          label="Address"
+          element="input"
+          validators={[VALIDATOR_REQUIRE()]}
+          errMessage="Please enter a valid address!"
+          onInput={inputHandler}
+          initValue={formState.inputs.address.value}
+          initValid={formState.inputs.address.isValid}
+        />
+        <div className="new-place-btn">
+          <Button type="submit" disabled={!formState.isValid} primary>
+            SUBMIT
+          </Button>
+        </div>
+      </form>
+    </Card>
   );
 };
 
