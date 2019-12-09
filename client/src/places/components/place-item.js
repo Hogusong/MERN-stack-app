@@ -84,6 +84,11 @@ const PlaceItem = props => {
                 DELETE
               </Button>
             )}
+            {props.fromAllPlaces && (
+              <Button primary onClick={props.onClose}>
+                Previous
+              </Button>
+            )}
           </div>
         </Card>
       </li>
