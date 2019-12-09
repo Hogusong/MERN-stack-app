@@ -9,9 +9,17 @@ const PlaceItem = props => {
   const place = props.place;
 
   const [showMap, setShowMap] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const openMapHandler = () => setShowMap(true);
   const closeMapHandler = () => setShowMap(false);
+  const openConfirmHandler = () => setShowConfirm(true);
+  const closeConfirmHandler = () => setShowConfirm(false);
+
+  const deletePlace = () => {
+    console.log("deleted...");
+    setShowConfirm(false);
+  };
 
   return (
     <React.Fragment>
@@ -23,8 +31,32 @@ const PlaceItem = props => {
         footer={<Button onClick={closeMapHandler}>Close</Button>}
       >
         <div className="map-container">
-          <Map center={place.location} zoom={16}/>
+          <Map center={place.location} zoom={16} />
         </div>
+      </Modal>
+      <Modal
+        show={showConfirm}
+        header="Confirm to Delete"
+        contentClass="place-item__modal-delete"
+        footerClass="place-item__modal-action"
+        footer={
+          <React.Fragment>
+            <div className="center">
+              <Button danger onClick={deletePlace}>
+                Confirm
+              </Button>
+              <Button inverse onClick={closeConfirmHandler}>
+                Cancel
+              </Button>
+            </div>
+          </React.Fragment>
+        }
+      >
+        <p className="center">Are you sure to delete '{place.title}'?</p>
+        <p className="center">
+          {" "}
+          Please note that it can't be undone thereafter.
+        </p>
       </Modal>
       <li className="place-item">
         <Card className="place-content">
@@ -43,7 +75,9 @@ const PlaceItem = props => {
             <Button to={`/places/edit/${place.id}`} inverse>
               EDIT
             </Button>
-            <Button danger>DELETE</Button>
+            <Button danger onClick={openConfirmHandler}>
+              DELETE
+            </Button>
           </div>
         </Card>
       </li>
