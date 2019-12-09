@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "../../css/auth.css";
 import Input from "../../shared/components/FormElements/input";
@@ -10,8 +10,10 @@ import {
   VALIDATOR_EMAIL
 } from "../../shared/utilities/validators";
 import { useForm } from "../../shared/hooks/form-hook";
+import { AuthContext } from "../../shared/context/auth-context";
 
 const Auth = () => {
+  const auth = useContext(AuthContext);
 
   const [isSignUp, setSignUp] = useState(false);
 
@@ -51,12 +53,12 @@ const Auth = () => {
     event.preventDefault();
     if (isSignUp) {
       if (formState.inputs.password.value === formState.inputs.confirmPass.value) {
-        console.log("SignUp & Logged in...")
+        auth.login('u2');
       } else {
         console.log('Passwords are not matched...');
       }
     } else {
-      console.log("logged in...");
+      auth.login('u2');
     }
   };
 
