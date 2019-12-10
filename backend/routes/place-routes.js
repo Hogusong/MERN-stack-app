@@ -1,31 +1,13 @@
 const express = require('express');
-const PLACES = require('../dummy-data/places')
-const HttpError = require('../models/http-error');
+
+const ctrl = require('../controllers/ctrl-place');
 
 const router = express.Router();
 
-router.get('/:id', (req, res, next) => {
-  const placeId = req.params.id;
-  const place = PLACES.find(p => p.id === placeId);
-  if (place) res.json(place);
-  // handling this error directly.
-  else res.status(404).json(`No place is founded with placeId: ${placeId}.`)
-});
+router.get('/:id', ctrl.getPlace);
 
-router.get('/', (req, res, next) => {
-  if (PLACES.length > 0) res.json(PLACES);
-  else {
-    throw new HttpError(404, 'No place is founded...');
-  }
-});
+router.get('/', ctrl.getAllPlaces);
 
-router.get('/user/:id', (req, res, next) => {
-  const userId = req.params.id;
-  const places = PLACES.filter(p => p.creator === userId);
-  if (places.length > 0) res.json(places);
-  else {
-    return next(new HttpError(404, `No place is founded with userId: ${userId}.`));
-  }
-});
+router.get('/user/:id', ctrl.getUserPlaces);
 
 module.exports = router;
