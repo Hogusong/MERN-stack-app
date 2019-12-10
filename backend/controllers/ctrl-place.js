@@ -1,7 +1,7 @@
 const PLACES = require('../dummy-data/places')
 const HttpError = require('../models/http-error');
 
-const getPlace = (req, res, next) => {
+const getPlaceById = (req, res, next) => {
   const placeId = req.params.id;
   const place = PLACES.find(p => p.id === placeId);
   if (place) res.json(place);
@@ -16,7 +16,7 @@ const getAllPlaces = (req, res, next) => {
   }
 };
 
-const getUserPlaces = (req, res, next) => {
+const getPlacesByUserId = (req, res, next) => {
   const userId = req.params.id;
   const places = PLACES.filter(p => p.creator === userId);
   if (places.length > 0) res.json(places);
@@ -25,4 +25,4 @@ const getUserPlaces = (req, res, next) => {
   }
 }
 
-module.exports = { getPlace, getAllPlaces, getUserPlaces };
+module.exports = { getPlaceById, getAllPlaces, getPlacesByUserId };
