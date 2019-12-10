@@ -12,6 +12,8 @@ router.get('/user/:id', ctrl.getPlacesByUserId);
 
 router.post('/new', ctrl.createPlace);
 
-router.post('/edit', ctrl.updatePlace);
+router.patch('/edit', ctrl.updatePlace);
+
+router.delete('/:id', ctrl.deletePlace);
 
 module.exports = router;

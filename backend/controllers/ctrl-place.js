@@ -42,14 +42,14 @@ const createPlace = (req, res, next) => {
     creator
   };
   placesData.push(newPlace);
-  res.status(201).json(placesData);
+  res.status(200).json(placesData);
 };
 
 const updatePlace = (req, res, next) => {
   const { id, title, description, imageUrl, location, address, creator } = req.body;
   const index = placesData.findIndex(place => place.id === id);
   if (index < 0) {
-    throw new HttpError(404, "Can't find place id: ${id}. Try again...")
+    throw new HttpError(404, `Can't find place id: ${id}. Try again...`)
   }
   const newPlace = {
     id,
@@ -61,7 +61,17 @@ const updatePlace = (req, res, next) => {
     creator
   };
   placesData[index] = newPlace;
-  res.status(201).json(placesData[index]);
+  res.status(200).json(placesData[index]);
+};
+
+const deletePlace = (req, res, next) => {
+  const placeId = req.params.id;
+  const index = placesData.findIndex(p => p.id === placeId);
+  if (index < 0) {
+    throw new HttpError(404, `Can't find place id: ${id}. Try again...`)
+  }
+  placesData.splice(index, 1);
+  res.status(200).json(placesData);
 };
 
 module.exports = {
@@ -69,5 +79,6 @@ module.exports = {
   getAllPlaces,
   getPlacesByUserId,
   createPlace,
-  updatePlace
+  updatePlace,
+  deletePlace
 };
