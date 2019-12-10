@@ -1,5 +1,6 @@
 const express = require('express');
 const PLACES = require('../dummy-data/places')
+const HttpError = require('../models/http-error');
 
 const router = express.Router();
 
@@ -14,9 +15,7 @@ router.get('/:id', (req, res, next) => {
 router.get('/', (req, res, next) => {
   if (PLACES.length > 0) res.json(PLACES);
   else {
-    const error = new Error('No place is founded...');
-    error.code = 404;
-    throw error;
+    throw new HttpError(404, 'No place is founded...');
   }
 });
 
@@ -25,9 +24,7 @@ router.get('/user/:id', (req, res, next) => {
   const places = PLACES.filter(p => p.creator === userId);
   if (places.length > 0) res.json(places);
   else {
-    const error = new Error(`No place is founded with userId: ${userId}.`);
-    error.code = 404;
-    return next(error);
+    return next(new HttpError(404, `No place is founded with userId: ${userId}.`));
   }
 });
 
