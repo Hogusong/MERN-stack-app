@@ -10,4 +10,8 @@ router.get('/', ctrl.getAllPlaces);
 
 router.get('/user/:id', ctrl.getPlacesByUserId);
 
+router.post('/new', ctrl.createPlace);
+
+router.post('/edit', ctrl.updatePlace);
+
 module.exports = router;
