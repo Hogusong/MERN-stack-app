@@ -1,4 +1,6 @@
 const uuid = require("uuid/v4");
+const { validationResult } = require('express-validator');
+
 const USERS = require("../dummy-data/users");
 const HttpError = require("../models/http-error");
 
@@ -16,9 +18,14 @@ const login = (req, res, next) => {
 };
 
 const signup = (req, res, next) => {
+  const errors = validationResult(req).errors;
+  if (errors.length > 0) {
+    throw new HttpError(422, `Invalid inputs passed, please check ${errors[0].param}.`);
+  }
+
   const { name, email, password } = req.body;
   if (usersData.find(u => u.email === email)) {
-    throw new HttpError(404, "This email is already registered. Try another.");
+    throw new HttpError(422, "This email is already registered. Try another.");
   }
   const user = {
     id: uuid(),
@@ -38,6 +45,11 @@ const getUsers = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
+  const errors = validationResult(req).errors;
+  if (errors.length > 0) {
+    throw new HttpError(422, `Invalid inputs passed, please check ${errors[0].param}.`);
+  }
+
   const { id, name, email, password } = req.body;
   let index = usersData.findIndex(u => u.email === email);
   if (index >= 0 && usersData[index].id != id) {
