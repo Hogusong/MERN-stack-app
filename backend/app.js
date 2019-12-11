@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const placeRoutes = require('./routes/place-routes');
+const userRoutes = require('./routes/user-routes');
 const HttpError = require("./models/http-error");
 
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/api/places', placeRoutes);
+app.use('/api/users', userRoutes);
 
 // if a wrong route is provided, this error occur.
 app.use((req, res, next) => {
